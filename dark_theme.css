@@ -1,0 +1,143 @@
+/* Estilos para el Tema Oscuro */
+body.dark-mode-active, /* Para cuando se aplique directamente la clase al body si es necesario */
+:root:has(#dark-theme-style:not([disabled])) { /* Aplica si el stylesheet dark_theme.css está habilitado */
+    --primary-color: #50C878; /* Verde esmeralda (un poco más brillante para contraste en oscuro) */
+    --secondary-color: #3CB371; /* Verde mar medio (puede mantenerse o ajustarse) */
+    --accent-color: #2E8B57; /* Verde mar oscuro (para acentos) */
+    
+    --background-color: #1e1e1e; /* Gris muy oscuro para el fondo */
+    --surface-color: #2c2c2c; /* Gris oscuro para superficies como tarjetas y header */
+    
+    --text-color: #e0e0e0; /* Gris claro para texto principal */
+    --text-secondary-color: #b0b0b0; /* Gris medio-claro para texto secundario */
+    
+    --border-color: #444444; /* Gris oscuro para bordes */
+    --shadow-color: rgba(0, 0, 0, 0.3); /* Sombra un poco más pronunciada en oscuro */
+}
+
+/* Ajustes específicos para el tema oscuro si son necesarios más allá de las variables */
+
+/* Header en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) header {
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) header h1 {
+    color: var(--primary-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) header nav ul li a {
+    color: var(--text-secondary-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) header nav ul li a:hover,
+:root:has(#dark-theme-style:not([disabled])) header nav ul li a.active {
+    color: #ffffff; /* Texto blanco para mejor contraste sobre primario oscuro */
+    background-color: var(--primary-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) #theme-toggle-button {
+    background-color: var(--accent-color);
+    color: #ffffff; /* Texto blanco */
+}
+
+/* Secciones en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) section {
+    background-color: var(--surface-color);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) section h2 {
+    color: var(--secondary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Tarjetas en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) .card {
+    background-color: var(--surface-color); /* Usar un gris un poco más claro que el fondo de sección */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) .card:hover {
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) .card h3 {
+    color: var(--primary-color); /* Títulos de tarjeta más brillantes */
+}
+
+:root:has(#dark-theme-style:not([disabled])) .card p {
+    color: var(--text-secondary-color);
+}
+
+/* Botones en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) .button,
+:root:has(#dark-theme-style:not([disabled])) button[type="submit"] {
+    background-color: var(--primary-color);
+    color: #ffffff; /* Texto blanco para contraste */
+}
+
+:root:has(#dark-theme-style:not([disabled])) .button:hover,
+:root:has(#dark-theme-style:not([disabled])) button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Formularios en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) input[type="search"],
+:root:has(#dark-theme-style:not([disabled])) input[type="text"],
+:root:has(#dark-theme-style:not([disabled])) input[type="email"] {
+    background-color: #3a3a3a; /* Fondo de input más oscuro */
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) input[type="search"]:focus,
+:root:has(#dark-theme-style:not([disabled])) input[type="text"]:focus,
+:root:has(#dark-theme-style:not([disabled])) input[type="email"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(80, 200, 120, 0.4); /* Sombra de foco con color primario oscuro */
+}
+
+/* Controles de vista en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) .view-button {
+    color: var(--text-secondary-color);
+    border: 1px solid var(--border-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) .view-button.active,
+:root:has(#dark-theme-style:not([disabled])) .view-button:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+
+/* Footer en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) footer {
+    background-color: var(--surface-color);
+    color: var(--text-secondary-color);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Página "Acerca de Mí" en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) .profile-picture {
+    border: 4px solid var(--primary-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) .bio h3 {
+    color: var(--primary-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) .contact-info h4 {
+    color: var(--primary-color);
+}
+
+/* Resultados de búsqueda en tema oscuro */
+:root:has(#dark-theme-style:not([disabled])) #search-query-display {
+    color: var(--primary-color);
+}
+
+:root:has(#dark-theme-style:not([disabled])) #no-results-message {
+    color: var(--text-secondary-color);
+}
