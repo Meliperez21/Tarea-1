@@ -35,7 +35,7 @@ const dashboardSectionsData = [
         id: 'dashAcerca',
         title: 'Acerca de Mí',
         description: 'Más información sobre mí y mi contacto.',
-        imgSrc: '../perfil.jpg',
+        imgSrc: 'perfil.jpg',
         iconClass: 'fas fa-user-circle',
         link: 'acerca_de_mi.html'
     }
