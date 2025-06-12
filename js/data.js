@@ -49,7 +49,7 @@ const asignacionesData = [
         descripcion: 'Crear una página web en GitHub que sea un portafolio del curso de Inteligencia Artificial.',
         actividades: 'Hacer el código del portafolio, subirlo a GitHub en un repositorio para la asignación 1 y publicarlo como página web en GitHub Pages.',
         resultados: 'Se creó un página web de GitHub con éxito.',
-        repoLink: 'https://meliperez21.github.io/Tarea-1/' 
+        repoLink: 'https://github.com/Meliperez21/Tarea-1' 
     },
     {
         id: 'asig2',
