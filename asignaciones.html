@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignaciones - Portafolio IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --color-primary-light: #14B8A6;
+                --color-secondary-light: #0D9488;
+                --color-accent-light: #0F766E;
+                --color-text-light: #111827;
+                --color-text-light-secondary: #4B5563;
+                --color-bg-light: #F0FDF4;
+                --color-surface-light: #FFFFFF;
+                --color-border-light: #A7F3D0;
+
+                --color-primary-dark: #2DD4BF;
+                --color-secondary-dark: #5EEAD4;
+                --color-accent-dark: #0D9488;
+                --color-text-dark: #E5E7EB;
+                --color-text-dark-secondary: #9CA3AF;
+                --color-bg-dark: #0B1120;
+                --color-surface-dark: #17223b;
+                --color-border-dark: #2c3a54;
+            }
+            html:not(.dark) {
+                --color-primary: var(--color-primary-light);
+                --color-secondary: var(--color-secondary-light);
+                --color-accent: var(--color-accent-light);
+                --color-text: var(--color-text-light);
+                --color-text-secondary: var(--color-text-light-secondary);
+                --color-bg: var(--color-bg-light);
+                --color-surface: var(--color-surface-light);
+                --color-border: var(--color-border-light);
+            }
+            html.dark {
+                --color-primary: var(--color-primary-dark);
+                --color-secondary: var(--color-secondary-dark);
+                --color-accent: var(--color-accent-dark);
+                --color-text: var(--color-text-dark);
+                --color-text-secondary: var(--color-text-dark-secondary);
+                --color-bg: var(--color-bg-dark);
+                --color-surface: var(--color-surface-dark);
+                --color-border: var(--color-border-dark);
+            }
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            .font-mono { 
+                font-family: 'Roboto Mono', monospace;
+            }
+            .smooth-transition {
+                @apply transition-all duration-300 ease-in-out;
+            }
+        }
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+    </style>
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+        function toggleTheme() {
+          if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        }
+    </script>
+</head>
+<body class="bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300 font-sans pt-20">
+    <header id="main-header" class="bg-[var(--color-surface)] text-[var(--color-text)] shadow-lg fixed top-0 left-0 right-0 z-50 transition-transform duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+            <a href="index.html" class="text-2xl sm:text-3xl font-bold text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">
+                MeliPerez21 IA
+            </a>
+            
+            <nav class="hidden md:flex space-x-2">
+                <a href="index.html" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Inicio</a>
+                <a href="asignaciones.html" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Asignaciones</a>
+                <a href="laboratorios.html" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Laboratorios</a>
+                <a href="parciales.html" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Parciales</a>
+                <a href="proyecto_final.html" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Proyecto Final</a>
+                <a href="acerca_de_mi.html" class="px-3 py-2 rounded-full text-sm font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Acerca de Mí</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleTheme()" id="theme-toggle-button" class="p-2 rounded-full text-[var(--color-text)] hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-accent)] transition-colors" aria-label="Toggle theme">
+                    <i id="theme-icon" class="fas fa-sun text-xl"></i> 
+                    <span class="sr-only">Cambiar Tema</span>
+                </button>
+
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Open menu">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-surface)] shadow-lg">
+            <nav class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Inicio</a>
+                <a href="asignaciones.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Asignaciones</a>
+                <a href="laboratorios.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Laboratorios</a>
+                <a href="parciales.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Parciales</a>
+                <a href="proyecto_final.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Proyecto Final</a>
+                <a href="acerca_de_mi.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-[var(--color-primary)] hover:text-white transition-colors">Acerca de Mí</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <section id="asignaciones-list" class="mb-12 p-6 bg-[var(--color-surface)] rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-6 text-center">Asignaciones del Curso</h2>
+            <div class="flex justify-end mb-6 space-x-2">
+                <button id="grid-view-button" class="view-button active p-2 rounded-full bg-[var(--color-accent)] text-white hover:opacity-80 transition-opacity" title="Vista Cuadrícula">
+                    <i class="fas fa-th-large"></i>
+                </button>
+                <button id="list-view-button" class="view-button p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-[var(--color-text)] hover:opacity-80 transition-opacity" title="Vista Lista">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="asignaciones-container">
+                <!-- Las tarjetas de asignaciones se cargarán aquí por JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[var(--color-surface)] text-[var(--color-text-secondary)] py-8 text-center border-t border-[var(--color-border)]">
+        <p class="text-sm">&copy; 2025 Portafolio IA - MeliPerez21. Todos los derechos reservados.</p>
+        <p class="text-xs mt-1">Diseñado con Tailwind CSS & Font Awesome</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>
