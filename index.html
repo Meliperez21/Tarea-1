@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio IA - MeliPerez21</title>
+    
+    <!-- Google Fonts: Montserrat & Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Tailwind CSS JIT CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark_theme.css">
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Lato', sans-serif;
+                @apply bg-[var(--color-background)] text-[var(--color-text-primary)] transition-colors duration-300;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Montserrat', sans-serif;
+                @apply font-bold text-[var(--color-text-primary)];
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón para abrir/cerrar el Sidebar -->
+    <button id="sidebar-toggle" class="fixed top-4 left-4 z-50 p-2 rounded-md bg-surface text-text-primary shadow-lg transition-transform transform hover:scale-110">
+        <i class="fas fa-bars text-2xl"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-surface text-text-primary shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out z-40 flex flex-col">
+        <div class="p-6 border-b border-border">
+            <h2 class="text-2xl font-montserrat font-bold text-accent">MeliPerez21 IA</h2>
+        </div>
+        <div class="p-6 flex-grow">
+            <div class="relative mb-6">
+                <input type="search" id="search-input" placeholder="Buscar proyectos..." class="w-full p-3 pl-10 border-2 border-border rounded-full bg-background focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary"></i>
+            </div>
+            <nav id="project-nav" class="space-y-2">
+                <!-- Los enlaces a proyectos se pueden generar dinámicamente aquí si se desea -->
+            </nav>
+        </div>
+        <div class="p-6 border-t border-border">
+            <div class="flex items-center justify-center gap-4">
+                <i class="fas fa-sun text-xl text-yellow-500"></i>
+                <label for="theme-switch" class="theme-switch">
+                    <input type="checkbox" id="theme-switch">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-moon text-xl text-indigo-500"></i>
+            </div>
+            <div class="flex justify-center gap-6 mt-6">
+                <a href="https://github.com/Meliperez21" target="_blank" class="text-text-secondary hover:text-accent transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                <a href="https://www.linkedin.com/in/melissa-pérez-9237162a3" target="_blank" class="text-text-secondary hover:text-accent transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main id="main-content" class="transition-all duration-300 ease-in-out">
+        <!-- Sección Hero / Acerca de Mí -->
+        <section id="hero" class="h-screen flex items-center justify-center bg-background p-8 text-center">
+            <div>
+                <h1 class="text-5xl md:text-7xl font-montserrat font-bold text-text-primary mb-4 leading-tight tracking-tighter">
+                    Hola, soy Melissa Pérez
+                </h1>
+                <p class="text-lg md:text-xl text-text-secondary max-w-3xl mx-auto tracking-wide">
+                    Bienvenido a mi portafolio profesional. Soy estudiante de Ingeniería Biomédica con un enfoque en Inteligencia Artificial y Aprendizaje Automático. Aquí encontrarás mis proyectos, experiencia y cómo puedo contribuir a tu equipo.
+                </p>
+            </div>
+        </section>
+
+        <!-- Nueva Sección de Perfil -->
+        <section id="profile" class="py-24 md:py-32 px-8 bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-montserrat font-bold text-center text-text-primary mb-16 tracking-tight">Perfil</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-1 flex justify-center">
+                        <img src="perfil.jpg" alt="Foto de perfil de Melissa Pérez" class="w-64 h-64 rounded-full border-4 border-accent shadow-lg transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="md:col-span-2 text-center md:text-left">
+                        <p class="text-lg text-text-secondary mb-4">
+                            Actualmente curso la carrera de Ingeniería Biomédica en la Universidad Latina de Panamá, donde desarrollo habilidades técnicas y analíticas enfocadas en el diseño, gestión y mantenimiento de tecnologías médicas. Me interesa especialmente el impacto que la ingeniería puede tener en la mejora del diagnóstico, tratamiento y calidad de vida de los pacientes.
+                        </p>
+                        <p class="text-lg text-text-secondary mb-4">
+                            Desde mi posición como Asistente de la Dirección de Investigación en la misma universidad, tengo la oportunidad de colaborar en proyectos académicos y científicos, apoyar procesos administrativos y contribuir al fortalecimiento de la cultura investigativa institucional. Esta experiencia me ha permitido desarrollar competencias en organización, comunicación académica, redacción de documentos técnicos y trabajo en equipo multidisciplinario.
+                        </p>
+                        <p class="text-lg text-text-secondary">
+                            Estoy en constante búsqueda de nuevas oportunidades para aprender, crecer profesionalmente y aportar soluciones creativas e innovadoras en el campo de la ingeniería biomédica.
+                        </p>
+                        <div class="mt-8">
+                            <a href="Hoja de Vida - Melissa Perez.pdf" download="Hoja de Vida - Melissa Perez.pdf" class="inline-block text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 px-8 rounded-full text-lg font-semibold shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+                                Descargar CV
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- Nueva Sección de Experiencia -->
+        <section id="experience" class="py-24 md:py-32 px-8 bg-surface">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-montserrat font-bold text-center text-text-primary mb-16 tracking-tight">Experiencia</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-1 flex justify-center">
+                        <i class="fas fa-briefcase text-8xl text-accent"></i>
+                    </div>
+                    <div class="md:col-span-2 text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-accent mb-2">Asistente de la Dirección de Investigación</h3>
+                        <p class="text-lg font-semibold text-text-primary">Universidad Latina de Panamá · Jornada completa</p>
+                        <p class="text-md text-text-secondary mt-1">may. 2025 - actualidad · 3 meses</p>
+                        <p class="text-md text-text-secondary mt-1">Panamá · Presencial</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Proyectos -->
+        <section id="projects" class="py-24 md:py-32 px-8 bg-background">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-montserrat font-bold text-center text-text-primary mb-16 tracking-tight">Proyectos</h2>
+                <div class="relative">
+                    <div id="projects-viewport" class="overflow-hidden">
+                        <div id="projects-container" class="flex"> <!-- Eliminado space-x-8, se manejará con JS/CSS -->
+                            <!-- Las tarjetas de proyecto se insertarán aquí dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Controles de Navegación del Slider -->
+                    <button id="prev-project" class="slider-arrow left-0">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-project" class="slider-arrow right-0">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Contenedor de Paginación -->
+                <div id="project-pagination" class="flex justify-center items-center mt-8 space-x-3">
+                    <!-- Los indicadores de paginación se insertarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Sección de Contacto -->
+        <section id="contact" class="py-24 md:py-32 px-8 bg-surface">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-montserrat font-bold text-center text-text-primary mb-16 tracking-tight">Contacto</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+                    <a href="mailto:mefperez@est.ulatina.edu.pa" class="contact-link group">
+                        <i class="fas fa-envelope text-3xl text-accent transition-transform duration-300 group-hover:scale-110"></i>
+                        <span class="ml-3 text-lg">mefperez@est.ulatina.edu.pa</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/melissa-pérez-9237162a3" target="_blank" class="contact-link group">
+                        <i class="fab fa-linkedin text-3xl text-accent transition-transform duration-300 group-hover:scale-110"></i>
+                        <span class="ml-3 text-lg">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/Meliperez21" target="_blank" class="contact-link group">
+                        <i class="fab fa-github text-3xl text-accent transition-transform duration-300 group-hover:scale-110"></i>
+                        <span class="ml-3 text-lg">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 bg-background text-text-secondary border-t border-border">
+        <p>&copy; 2025 Melissa Pérez. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
