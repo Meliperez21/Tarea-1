@@ -1,0 +1,392 @@
+/* 1. Variables de Color y Configuración Base */
+:root {
+    /* Tema Claro (Inspirado en Gemini - Paleta refinada) */
+    --color-background: #f0f4f9; /* Azul muy claro, casi blanco */
+    --color-surface: #ffffff;
+    --color-text-primary: #131314; /* Negro profundo */
+    --color-text-secondary: #5f6368; /* Gris de Google */
+    --color-accent: #1a73e8; /* Azul de Google */
+    --color-border: #dadce0; /* Borde estándar de Google */
+    --color-gradient-start: #d2e3fc; /* Inicio del gradiente del hero */
+
+    /* Gradientes para botones y elementos UI */
+    --color-button-bg: linear-gradient(135deg, #1a73e8, #4285f4);
+    --color-button-bg-hover: linear-gradient(135deg, #4285f4, #1a73e8);
+
+    /* Variables para consistencia */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+    --border-radius-md: 16px;
+    --border-radius-lg: 20px;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Las directivas de Tailwind se han movido a index.html para usar el JIT CDN */
+
+/* 2. Estilos Base y Tipografía */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: 'Lato', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+/* 3. Estilos de Componentes Específicos */
+
+/* Sidebar */
+#sidebar {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    border-right: 1px solid var(--color-border);
+}
+
+#sidebar-toggle {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+}
+
+#sidebar input[type="search"] {
+    background-color: var(--color-background);
+    border-color: var(--color-border);
+}
+
+#sidebar input[type="search"]:focus {
+    --tw-ring-color: var(--color-accent);
+}
+
+/* Theme Switch */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-border);
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--color-accent);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--color-accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Main Content */
+#main-content {
+    transition: transform 0.3s ease-in-out;
+}
+
+body.sidebar-open #main-content {
+    transform: translateX(18rem); /* 72 en unidades de Tailwind */
+}
+
+/* Hero Section */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: radial-gradient(ellipse at 50% 100%, var(--color-gradient-start), var(--color-background) 75%);
+}
+
+/* Profile Section */
+#profile img {
+    border-color: var(--color-accent);
+    object-fit: cover;
+    width: 288px; /* Aumentado de w-64 (256px) a w-72 (288px) */
+    height: 288px; /* Aumentado de h-64 (256px) a h-72 (288px) */
+}
+
+/* Projects Section */
+#projects {
+    background-color: var(--color-background);
+    /* Hacemos que la sección de proyectos tenga un overflow visible para que el pin de ScrollTrigger funcione bien */
+    overflow: visible;
+}
+
+#projects-container {
+    display: flex;
+    position: relative; /* Contenedor para las tarjetas absolutas */
+    min-height: 500px; /* Damos una altura mínima para evitar colapso */
+}
+
+/* Project Cards - Adaptado para el slider */
+.project-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center; /* Centrar verticalmente imagen y contenido */
+    
+    /* Estilo para el slider */
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    flex-shrink: 0; /* Evita que las tarjetas se encojan */
+    position: absolute; /* Posicionamiento absoluto para superponerlas */
+    top: 0;
+    left: 0;
+    opacity: 0; /* Ocultas por defecto */
+    visibility: hidden; /* Ocultas para accesibilidad */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.project-card.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative; /* El activo se posiciona estáticamente para dar altura */
+}
+
+@media (min-width: 1024px) { /* Aumentamos el breakpoint para el cambio */
+    .project-card {
+        grid-template-columns: 4fr 5fr; /* Damos más espacio al contenido */
+        max-width: 900px; /* Aumentamos el tamaño máximo */
+        margin: 0 auto; /* Centramos la tarjeta activa */
+    }
+}
+
+/* El hover se manejará con más sutileza, GSAP se encarga de la aparición */
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-card-image {
+    width: 100%;
+    height: 250px; /* Altura fija para móvil */
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .project-card-image {
+        height: 100%; /* Ocupa toda la altura de la tarjeta en desktop */
+    }
+}
+
+.project-card-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-card h3 {
+    color: var(--color-accent);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.project-card p {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    /* flex-grow: 1; */ /* Eliminado para quitar espacio extra */
+}
+
+.project-card a {
+    display: inline-block;
+    text-align: center;
+    background: var(--color-button-bg);
+    color: white;
+    padding: 0.75rem 1.75rem; /* Ajuste de padding */
+    border-radius: 9999px; /* pill shape */
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    align-self: flex-start; /* Alinear a la izquierda */
+    border: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.project-card a:hover {
+    background: var(--color-button-bg-hover);
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
+}
+
+/* Contact Section */
+#contact {
+    background-color: var(--color-surface);
+    padding-top: 6rem; /* Reducido de py-24 (6rem) a 4rem */
+    padding-bottom: 6rem; /* Reducido de py-24 (6rem) a 4rem */
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--color-accent);
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-background);
+    border-top: 1px solid var(--color-border);
+}
+
+/* Las animaciones ahora son manejadas por GSAP */
+
+/* Media Queries para responsividad general */
+@media (max-width: 768px) {
+    #profile .grid {
+        text-align: center;
+    }
+
+    .project-card {
+        grid-template-columns: 1fr; /* Apilado en móvil */
+    }
+
+    .project-card-content {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .project-card a {
+        align-self: center; /* Centrar botón en móvil */
+    }
+
+    #contact .flex-col {
+        gap: 2rem;
+    }
+}
+
+/* Experience Section */
+#experience {
+    background-color: var(--color-surface);
+}
+
+#experience i {
+    transition: transform 0.3s ease;
+}
+
+#experience:hover i {
+    transform: scale(1.05);
+}
+
+/* Slider Navigation Arrows */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.slider-arrow:hover {
+    background-color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--shadow-md);
+}
+
+.slider-arrow.left-0 {
+    left: -22px; /* Mitad fuera para un look moderno */
+}
+
+.slider-arrow.right-0 {
+    right: -22px; /* Mitad fuera */
+}
+
+@media (max-width: 768px) {
+    .slider-arrow.left-0 {
+        left: 8px;
+    }
+    .slider-arrow.right-0 {
+        right: 8px;
+    }
+}
+
+html.dark .slider-arrow {
+    background-color: rgba(32, 33, 36, 0.8); /* --color-surface-dark */
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+}
+
+html.dark .slider-arrow:hover {
+    background-color: #202124;
+}
+
+
+/* Project Pagination */
+#project-pagination .pagination-indicator {
+    width: 10px; /* Ligeramente más grande */
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-border);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#project-pagination .pagination-indicator.active {
+    width: 30px; /* Ligeramente más largo */
+    border-radius: 9999px;
+    background-color: var(--color-accent);
+}

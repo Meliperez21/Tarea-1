@@ -1,0 +1,22 @@
+html.dark {
+    /* Tema Oscuro (Refinado - Inspirado en Gemini) */
+    --color-background: #121317; /* Fondo más oscuro y profundo */
+    --color-surface: #1e2024; /* Superficie con un ligero tinte azul */
+    --color-text-primary: #e9eaf1; /* Texto primario ligeramente más brillante */
+    --color-text-secondary: #9aa0a6; /* Texto secundario con mejor contraste */
+    --color-accent: #8ab4f8; /* El azul de Google se ve bien en oscuro */
+    --color-border: #2d3035; /* Borde más integrado */
+    --color-gradient-start: #1a1c20; /* Gradiente de fondo más oscuro */
+
+    /* Sincronizar gradientes con el tema claro */
+    --color-button-bg: linear-gradient(120deg, #7c9eff, #9282ff);
+    --color-button-bg-hover: linear-gradient(120deg, #9282ff, #7c9eff);
+}
+
+html.dark .slider {
+    background-color: #2c3a54; /* Usando el color del borde para el fondo del slider */
+}
+
+html.dark .slider:before {
+    background-color: #E0E0E0; /* Un color claro para el círculo */
+}
