@@ -55,6 +55,13 @@ const asignacionesData = [
         titulo: 'Titanic Spaceship',
         descripcion: 'Este proyecto aborda un problema de clasificación para predecir si un pasajero fue transportado a otra dimensión durante una colisión. Se realizó un análisis exploratorio de datos (EDA), preprocesamiento de características y la implementación de varios modelos de Machine Learning para encontrar la solución más precisa.',
         repoLink: 'https://github.com/Meliperez21/Tarea-2/blob/main/Tarea2_resultados.ipynb'
+    },
+    {
+        id: 'asig3',
+        imgSrc: 'tarea3.jpg',
+        titulo: 'Modelo de Clustering',
+        descripcion: 'Aplicación de algoritmos de clustering no supervisado para identificar y analizar grupos o patrones ocultos en un conjunto de datos, permitiendo una segmentación efectiva.',
+        repoLink: 'https://github.com/Meliperez21/Tarea-3/blob/main/modelo_clustering.ipynb'
     }
 ];
 
@@ -72,6 +79,13 @@ const laboratoriosData = [
         titulo: 'Clasificación Binaria en ML',
         descripcion: 'Implementación de un modelo de clasificación binaria desde cero. El laboratorio cubrió el preprocesamiento de datos, la selección y entrenamiento de un modelo como la regresión logística, y la evaluación de su rendimiento utilizando métricas clave como la precisión, el recall y la matriz de confusión para resolver un problema de predicción de "sí o no".',
         repoLink: 'https://github.com/Meliperez21/Laboratorio-2/blob/main/Laboratorio%202%20-%20Desarrollado%20-%20Melissa%20P%C3%A9rez.ipynb'
+    },
+    {
+        id: 'lab3',
+        imgSrc: 'lab3.jpg',
+        titulo: 'Predicción de Bicicletas',
+        descripcion: 'Desarrollo de un modelo de regresión para predecir la demanda de alquiler de bicicletas, utilizando datos históricos y variables externas como el clima para optimizar la disponibilidad.',
+        repoLink: 'https://github.com/Meliperez21/Laboratorio-3/blob/main/Laboratorio%202%20-%20Alquiler%20de%20Bicicletas.ipynb'
     }
 ];
 
