@@ -62,6 +62,13 @@ const asignacionesData = [
         titulo: 'Modelo de Clustering',
         descripcion: 'Aplicación de algoritmos de clustering no supervisado para identificar y analizar grupos o patrones ocultos en un conjunto de datos, permitiendo una segmentación efectiva.',
         repoLink: 'https://github.com/Meliperez21/Tarea-3/blob/main/modelo_clustering.ipynb'
+    },
+    {
+        id: 'asig4',
+        imgSrc: 'tarea4.png',
+        titulo: 'Modelo de Clasificación Predictiva',
+        descripcion: 'Implementación de un modelo de clasificación para predecir resultados basados en datos históricos.',
+        repoLink: 'https://github.com/Meliperez21/Tarea-4/blob/main/Tarea_4_Melissa_Perez.ipynb'
     }
 ];
 
@@ -86,8 +93,23 @@ const laboratoriosData = [
         titulo: 'Predicción de Bicicletas',
         descripcion: 'Desarrollo de un modelo de regresión para predecir la demanda de alquiler de bicicletas, utilizando datos históricos y variables externas como el clima para optimizar la disponibilidad.',
         repoLink: 'https://github.com/Meliperez21/Laboratorio-3/blob/main/Laboratorio%202%20-%20Alquiler%20de%20Bicicletas.ipynb'
+    },
+    {
+        id: 'lab4',
+        imgSrc: 'lab4.png',
+        titulo: 'Análisis Exploratorio de Datos',
+        descripcion: 'Análisis y visualización de datos para extraer insights y patrones relevantes.',
+        repoLink: 'https://github.com/Meliperez21/Laboratorio-4/blob/main/Laboratorio_4_Melissa_Perez.ipynb'
     }
 ];
 
-const parcialesData = [];
+const parcialesData = [
+    {
+        id: 'parcial1',
+        imgSrc: 'midterm.png',
+        titulo: 'Mid-Term Project: RadiologyAI',
+        descripcion: 'Desarrollo de un modelo de IA para el análisis de imágenes radiológicas y detección de anomalías.',
+        repoLink: 'https://github.com/Meliperez21/Mid-Term-Project-/blob/main/RadiologyAI.ipynb'
+    }
+];
 const proyectoFinalData = [];
